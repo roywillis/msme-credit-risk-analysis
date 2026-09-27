@@ -1,0 +1,70 @@
+[
+  {
+    "borrower_id": "BOR-0882",
+    "masked_name": "B*** S***",
+    "business_type": "Kuliner",
+    "province": "Sumatera Utara",
+    "credit_score": 520,
+    "loan_amount_idr": 20000000,
+    "effective_tenor_months": 12,
+    "monthly_income_idr": 4500000,
+    "dti_ratio": 0.3778,
+    "pd_percentage": "18.20%",
+    "is_restructured": true,
+    "restructuring_reason": "Auto-capped Culinary tenor from 24m to 12m (reduces default risk from 35.00% to 12.90%).",
+    "ai_evaluation": {
+      "recommendation": "APPROVE_WITH_CONDITIONS",
+      "risk_tier": "BORDERLINE_MODERATE",
+      "policy_trigger": "Credit Policy Section 4.2: Culinary Tenor Restructuring & DTI < 40% Rule",
+      "executive_summary": "Borrower BOR-0882 exhibits moderate credit risk (PD 18.20%) stabilized by mandatory 12-month tenor capping.",
+      "risk_drivers": [
+        "Low baseline credit score (520) near <550 threshold.",
+        "Elevated DTI ratio of 37.8%."
+      ],
+      "mitigating_factors": [
+        "Tenor auto-capped to 12 months, reducing default risk from 35.00% to 12.90%.",
+        "Monthly installment within approved 40% DTI ceiling."
+      ],
+      "action_checklist": [
+        "1. Verify POS transaction logs or QRIS daily sales records.",
+        "2. Confirm active merchant registration for premises.",
+        "3. Obtain signed agreement for restructured 12-month schedule."
+      ]
+    },
+    "decision_notes_formatted": "[STATUS]: APPROVE_WITH_CONDITIONS - Borrower BOR-0882 exhibits moderate credit risk (PD 18.20%) stabilized by mandatory 12-month tenor capping.\n[POLICY]: Credit Policy Section 4.2: Culinary Tenor Restructuring & DTI < 40% Rule"
+  },
+  {
+    "borrower_id": "BOR-0914",
+    "masked_name": "A*** M***",
+    "business_type": "Pertanian",
+    "province": "Sulawesi Utara",
+    "credit_score": 540,
+    "loan_amount_idr": 18000000,
+    "effective_tenor_months": 12,
+    "monthly_income_idr": 4500000,
+    "dti_ratio": 0.34,
+    "pd_percentage": "19.50%",
+    "is_restructured": false,
+    "restructuring_reason": "Standard contract terms applied.",
+    "ai_evaluation": {
+      "recommendation": "ESCALATE_TO_SENIOR_OFFICER",
+      "risk_tier": "BORDERLINE_HIGH",
+      "policy_trigger": "Credit Policy Section 5.1: Regional Hotspot Exposure Cap (North Sulawesi Agriculture)",
+      "executive_summary": "Borrower BOR-0914 presents high regional risk in North Sulawesi agriculture (PD 19.50%) requiring Senior Officer override.",
+      "risk_drivers": [
+        "Historical regional agriculture default rate spike (36.51% baseline).",
+        "Unmitigated credit score of 540."
+      ],
+      "mitigating_factors": [
+        "Loan principal (Rp 18,000,000) is within exposure limits.",
+        "Clean regional trade reference check recorded."
+      ],
+      "action_checklist": [
+        "1. Conduct on-site crop yield and harvest cycle verification.",
+        "2. Validate secondary guarantor income documentation.",
+        "3. Obtain approval signature from Regional Head of Credit Risk."
+      ]
+    },
+    "decision_notes_formatted": "[STATUS]: ESCALATE_TO_SENIOR_OFFICER - Borrower BOR-0914 presents high regional risk in North Sulawesi agriculture (PD 19.50%) requiring Senior Officer override.\n[POLICY]: Credit Policy Section 5.1: Regional Hotspot Exposure Cap (North Sulawesi Agriculture)"
+  }
+]
