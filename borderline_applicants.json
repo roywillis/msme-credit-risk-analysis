@@ -1,0 +1,344 @@
+[
+  {
+    "borrower_id": "BOR-0009",
+    "nik": "3374016010940000",
+    "masked_nik": "337401********00",
+    "borrower_name": "Anisa Rahma",
+    "masked_name": "An********a",
+    "business_name": "Toko Kelontong Anisa",
+    "business_type": "Jasa",
+    "province": "Jawa Tengah",
+    "credit_score": 630,
+    "loan_amount_granted": 10000000,
+    "loan_tier_granted": "TIER_1_MICRO_10M",
+    "monthly_installment_idr": 850000,
+    "effective_tenor_months": 12,
+    "monthly_income_idr": 6000000,
+    "pd_score": "10.00%",
+    "application_status": "BORDERLINE_HITL",
+    "decision_notes": "[STATUS]: BORDERLINE_HITL - Borderline risk [5.0% <= PD <= 20.0%]. Routed to Underwriter review queue.\n[LOAN GRANTED]: Rp 10,000,000 (Tier: TIER_1_MICRO_10M) | Monthly Installment: Rp 850.000\n[SCORE SUMMARY]: Credit Score: 630 | Base PD: 10.0% | Final PD: 10.00%\n[TERMS]: Tenor: 12m \n[CAPACITY & AFFORDABILITY]: Monthly Income: Rp 6.000.000  | Max Capacity: Rp 28.235.294 | Post-Grant DTI: 14.2%\n[PROCESSED AT]: 2026-09-27T06:41:47.533Z",
+    "scoring": {
+      "calculated_pd": 0.1,
+      "pd_percentage": "10.00%",
+      "base_pd": 0.1
+    },
+    "flags": {
+      "is_valid_nik": true,
+      "is_imputed_income": false,
+      "below_min_income": false,
+      "is_restructured": false,
+      "dti_ratio": 0.1417,
+      "is_high_risk_pd": false
+    },
+    "terms": {
+      "original_tenor_months": 0,
+      "effective_tenor_months": 0,
+      "is_restructured": false,
+      "restructuring_reason": "None"
+    }
+  },
+  {
+    "borrower_id": "BOR-0010",
+    "nik": "5171011809900010",
+    "masked_nik": "517101********10",
+    "borrower_name": "Wayan Sukerta",
+    "masked_name": "Wa**********a",
+    "business_name": "Cuci Motor Wayan",
+    "business_type": "Jasa",
+    "province": "Bali",
+    "credit_score": 610,
+    "loan_amount_granted": 10000000,
+    "loan_tier_granted": "TIER_1_MICRO_10M",
+    "monthly_installment_idr": 850000,
+    "effective_tenor_months": 12,
+    "monthly_income_idr": 7000000,
+    "pd_score": "10.00%",
+    "application_status": "BORDERLINE_HITL",
+    "decision_notes": "[STATUS]: BORDERLINE_HITL - Borderline risk [5.0% <= PD <= 20.0%]. Routed to Underwriter review queue.\n[LOAN GRANTED]: Rp 10,000,000 (Tier: TIER_1_MICRO_10M) | Monthly Installment: Rp 850.000\n[SCORE SUMMARY]: Credit Score: 610 | Base PD: 10.0% | Final PD: 10.00%\n[TERMS]: Tenor: 12m \n[CAPACITY & AFFORDABILITY]: Monthly Income: Rp 7.000.000  | Max Capacity: Rp 32.941.176 | Post-Grant DTI: 12.1%\n[PROCESSED AT]: 2026-09-27T06:41:47.533Z",
+    "scoring": {
+      "calculated_pd": 0.1,
+      "pd_percentage": "10.00%",
+      "base_pd": 0.1
+    },
+    "flags": {
+      "is_valid_nik": true,
+      "is_imputed_income": false,
+      "below_min_income": false,
+      "is_restructured": false,
+      "dti_ratio": 0.1214,
+      "is_high_risk_pd": false
+    },
+    "terms": {
+      "original_tenor_months": 0,
+      "effective_tenor_months": 0,
+      "is_restructured": false,
+      "restructuring_reason": "None"
+    }
+  },
+  {
+    "borrower_id": "BOR-0013",
+    "nik": "3578015512850010",
+    "masked_nik": "357801********10",
+    "borrower_name": "Endang Lestari",
+    "masked_name": "En***********i",
+    "business_name": "Fotocopy & ATK Endang",
+    "business_type": "Jasa",
+    "province": "Jawa Timur",
+    "credit_score": 640,
+    "loan_amount_granted": 25000000,
+    "loan_tier_granted": "TIER_2_MICRO_25M",
+    "monthly_installment_idr": 2125000,
+    "effective_tenor_months": 12,
+    "monthly_income_idr": 10000000,
+    "pd_score": "10.00%",
+    "application_status": "BORDERLINE_HITL",
+    "decision_notes": "[STATUS]: BORDERLINE_HITL - Borderline risk [5.0% <= PD <= 20.0%]. Routed to Underwriter review queue.\n[LOAN GRANTED]: Rp 25,000,000 (Tier: TIER_2_MICRO_25M) | Monthly Installment: Rp 2.125.000\n[SCORE SUMMARY]: Credit Score: 640 | Base PD: 10.0% | Final PD: 10.00%\n[TERMS]: Tenor: 12m \n[CAPACITY & AFFORDABILITY]: Monthly Income: Rp 10.000.000  | Max Capacity: Rp 47.058.824 | Post-Grant DTI: 21.3%\n[PROCESSED AT]: 2026-09-27T06:41:47.533Z",
+    "scoring": {
+      "calculated_pd": 0.1,
+      "pd_percentage": "10.00%",
+      "base_pd": 0.1
+    },
+    "flags": {
+      "is_valid_nik": true,
+      "is_imputed_income": false,
+      "below_min_income": false,
+      "is_restructured": false,
+      "dti_ratio": 0.2125,
+      "is_high_risk_pd": false
+    },
+    "terms": {
+      "original_tenor_months": 0,
+      "effective_tenor_months": 0,
+      "is_restructured": false,
+      "restructuring_reason": "None"
+    }
+  },
+  {
+    "borrower_id": "BOR-0014",
+    "nik": "1271012301890010",
+    "masked_nik": "127101********10",
+    "borrower_name": "Taufik Hidayat",
+    "masked_name": "Ta***********t",
+    "business_name": "Tambak Ikan Mas",
+    "business_type": "Pertanian",
+    "province": "Sumatera Utara",
+    "credit_score": 620,
+    "loan_amount_granted": 25000000,
+    "loan_tier_granted": "TIER_2_MICRO_25M",
+    "monthly_installment_idr": 2125000,
+    "effective_tenor_months": 12,
+    "monthly_income_idr": 11500000,
+    "pd_score": "10.00%",
+    "application_status": "BORDERLINE_HITL",
+    "decision_notes": "[STATUS]: BORDERLINE_HITL - Borderline risk [5.0% <= PD <= 20.0%]. Routed to Underwriter review queue.\n[LOAN GRANTED]: Rp 25,000,000 (Tier: TIER_2_MICRO_25M) | Monthly Installment: Rp 2.125.000\n[SCORE SUMMARY]: Credit Score: 620 | Base PD: 10.0% | Final PD: 10.00%\n[TERMS]: Tenor: 12m \n[CAPACITY & AFFORDABILITY]: Monthly Income: Rp 11.500.000  | Max Capacity: Rp 54.117.647 | Post-Grant DTI: 18.5%\n[PROCESSED AT]: 2026-09-27T06:41:47.533Z",
+    "scoring": {
+      "calculated_pd": 0.1,
+      "pd_percentage": "10.00%",
+      "base_pd": 0.1
+    },
+    "flags": {
+      "is_valid_nik": true,
+      "is_imputed_income": false,
+      "below_min_income": false,
+      "is_restructured": false,
+      "dti_ratio": 0.1848,
+      "is_high_risk_pd": false
+    },
+    "terms": {
+      "original_tenor_months": 0,
+      "effective_tenor_months": 0,
+      "is_restructured": false,
+      "restructuring_reason": "None"
+    }
+  },
+  {
+    "borrower_id": "BOR-0018",
+    "nik": "3578014407870010",
+    "masked_nik": "357801********10",
+    "borrower_name": "Maya Indah",
+    "masked_name": "Ma*******h",
+    "business_name": "Salon Muslimah Maya",
+    "business_type": "Jasa",
+    "province": "Jawa Timur",
+    "credit_score": 650,
+    "loan_amount_granted": 50000000,
+    "loan_tier_granted": "TIER_3_MIKRO_50M",
+    "monthly_installment_idr": 4250000,
+    "effective_tenor_months": 12,
+    "monthly_income_idr": 18000000,
+    "pd_score": "10.00%",
+    "application_status": "BORDERLINE_HITL",
+    "decision_notes": "[STATUS]: BORDERLINE_HITL - Borderline risk [5.0% <= PD <= 20.0%]. Routed to Underwriter review queue.\n[LOAN GRANTED]: Rp 50,000,000 (Tier: TIER_3_MIKRO_50M) | Monthly Installment: Rp 4.250.000\n[SCORE SUMMARY]: Credit Score: 650 | Base PD: 10.0% | Final PD: 10.00%\n[TERMS]: Tenor: 12m \n[CAPACITY & AFFORDABILITY]: Monthly Income: Rp 18.000.000  | Max Capacity: Rp 84.705.882 | Post-Grant DTI: 23.6%\n[PROCESSED AT]: 2026-09-27T06:41:47.534Z",
+    "scoring": {
+      "calculated_pd": 0.1,
+      "pd_percentage": "10.00%",
+      "base_pd": 0.1
+    },
+    "flags": {
+      "is_valid_nik": true,
+      "is_imputed_income": false,
+      "below_min_income": false,
+      "is_restructured": false,
+      "dti_ratio": 0.2361,
+      "is_high_risk_pd": false
+    },
+    "terms": {
+      "original_tenor_months": 0,
+      "effective_tenor_months": 0,
+      "is_restructured": false,
+      "restructuring_reason": "None"
+    }
+  },
+  {
+    "borrower_id": "BOR-0019",
+    "nik": "3578012211830010",
+    "masked_nik": "357801********10",
+    "borrower_name": "Budi Hartono",
+    "masked_name": "Bu*********o",
+    "business_name": "CV Logistik Hartono",
+    "business_type": "Jasa",
+    "province": "Jawa Timur",
+    "credit_score": 640,
+    "loan_amount_granted": 100000000,
+    "loan_tier_granted": "TIER_4_SMALL_100M",
+    "monthly_installment_idr": 8500000,
+    "effective_tenor_months": 12,
+    "monthly_income_idr": 35000000,
+    "pd_score": "10.00%",
+    "application_status": "BORDERLINE_HITL",
+    "decision_notes": "[STATUS]: BORDERLINE_HITL - Borderline risk [5.0% <= PD <= 20.0%]. Routed to Underwriter review queue.\n[LOAN GRANTED]: Rp 100,000,000 (Tier: TIER_4_SMALL_100M) | Monthly Installment: Rp 8.500.000\n[SCORE SUMMARY]: Credit Score: 640 | Base PD: 10.0% | Final PD: 10.00%\n[TERMS]: Tenor: 12m \n[CAPACITY & AFFORDABILITY]: Monthly Income: Rp 35.000.000  | Max Capacity: Rp 164.705.882 | Post-Grant DTI: 24.3%\n[PROCESSED AT]: 2026-09-27T06:41:47.534Z",
+    "scoring": {
+      "calculated_pd": 0.1,
+      "pd_percentage": "10.00%",
+      "base_pd": 0.1
+    },
+    "flags": {
+      "is_valid_nik": true,
+      "is_imputed_income": false,
+      "below_min_income": false,
+      "is_restructured": false,
+      "dti_ratio": 0.2429,
+      "is_high_risk_pd": false
+    },
+    "terms": {
+      "original_tenor_months": 0,
+      "effective_tenor_months": 0,
+      "is_restructured": false,
+      "restructuring_reason": "None"
+    }
+  },
+  {
+    "borrower_id": "BOR-0022",
+    "nik": "3374011905810020",
+    "masked_nik": "337401********20",
+    "borrower_name": "Slamet Riyadi",
+    "masked_name": "Sl**********i",
+    "business_name": "Kebun Melon Hidroponik",
+    "business_type": "Pertanian",
+    "province": "Jawa Tengah",
+    "credit_score": 660,
+    "loan_amount_granted": 100000000,
+    "loan_tier_granted": "TIER_4_SMALL_100M",
+    "monthly_installment_idr": 8500000,
+    "effective_tenor_months": 12,
+    "monthly_income_idr": 42000000,
+    "pd_score": "10.00%",
+    "application_status": "BORDERLINE_HITL",
+    "decision_notes": "[STATUS]: BORDERLINE_HITL - Borderline risk [5.0% <= PD <= 20.0%]. Routed to Underwriter review queue.\n[LOAN GRANTED]: Rp 100,000,000 (Tier: TIER_4_SMALL_100M) | Monthly Installment: Rp 8.500.000\n[SCORE SUMMARY]: Credit Score: 660 | Base PD: 10.0% | Final PD: 10.00%\n[TERMS]: Tenor: 12m \n[CAPACITY & AFFORDABILITY]: Monthly Income: Rp 42.000.000  | Max Capacity: Rp 197.647.059 | Post-Grant DTI: 20.2%\n[PROCESSED AT]: 2026-09-27T06:41:47.534Z",
+    "scoring": {
+      "calculated_pd": 0.1,
+      "pd_percentage": "10.00%",
+      "base_pd": 0.1
+    },
+    "flags": {
+      "is_valid_nik": true,
+      "is_imputed_income": false,
+      "below_min_income": false,
+      "is_restructured": false,
+      "dti_ratio": 0.2024,
+      "is_high_risk_pd": false
+    },
+    "terms": {
+      "original_tenor_months": 0,
+      "effective_tenor_months": 0,
+      "is_restructured": false,
+      "restructuring_reason": "None"
+    }
+  },
+  {
+    "borrower_id": "BOR-0026",
+    "nik": "3578010808770020",
+    "masked_nik": "357801********20",
+    "borrower_name": "Anton Gunawan",
+    "masked_name": "An**********n",
+    "business_name": "Distributor Sayur Anton",
+    "business_type": "Pertanian",
+    "province": "Jawa Timur",
+    "credit_score": 670,
+    "loan_amount_granted": 250000000,
+    "loan_tier_granted": "TIER_5_SMALL_250M",
+    "monthly_installment_idr": 21250000,
+    "effective_tenor_months": 12,
+    "monthly_income_idr": 90000000,
+    "pd_score": "10.00%",
+    "application_status": "BORDERLINE_HITL",
+    "decision_notes": "[STATUS]: BORDERLINE_HITL - Borderline risk [5.0% <= PD <= 20.0%]. Routed to Underwriter review queue.\n[LOAN GRANTED]: Rp 250,000,000 (Tier: TIER_5_SMALL_250M) | Monthly Installment: Rp 21.250.000\n[SCORE SUMMARY]: Credit Score: 670 | Base PD: 10.0% | Final PD: 10.00%\n[TERMS]: Tenor: 12m \n[CAPACITY & AFFORDABILITY]: Monthly Income: Rp 90.000.000  | Max Capacity: Rp 423.529.412 | Post-Grant DTI: 23.6%\n[PROCESSED AT]: 2026-09-27T06:41:47.534Z",
+    "scoring": {
+      "calculated_pd": 0.1,
+      "pd_percentage": "10.00%",
+      "base_pd": 0.1
+    },
+    "flags": {
+      "is_valid_nik": true,
+      "is_imputed_income": false,
+      "below_min_income": false,
+      "is_restructured": false,
+      "dti_ratio": 0.2361,
+      "is_high_risk_pd": false
+    },
+    "terms": {
+      "original_tenor_months": 0,
+      "effective_tenor_months": 0,
+      "is_restructured": false,
+      "restructuring_reason": "None"
+    }
+  },
+  {
+    "borrower_id": "BOR-0029",
+    "nik": "3374012903760020",
+    "masked_nik": "337401********20",
+    "borrower_name": "Haryanto",
+    "masked_name": "Ha*****o",
+    "business_name": "Armada Bus Antar Kota",
+    "business_type": "Jasa",
+    "province": "Jawa Tengah",
+    "credit_score": 680,
+    "loan_amount_granted": 250000000,
+    "loan_tier_granted": "TIER_5_SMALL_250M",
+    "monthly_installment_idr": 21250000,
+    "effective_tenor_months": 12,
+    "monthly_income_idr": 220000000,
+    "pd_score": "10.00%",
+    "application_status": "BORDERLINE_HITL",
+    "decision_notes": "[STATUS]: BORDERLINE_HITL - Borderline risk [5.0% <= PD <= 20.0%]. Routed to Underwriter review queue.\n[LOAN GRANTED]: Rp 250,000,000 (Tier: TIER_5_SMALL_250M) | Monthly Installment: Rp 21.250.000\n[SCORE SUMMARY]: Credit Score: 680 | Base PD: 10.0% | Final PD: 10.00%\n[TERMS]: Tenor: 12m \n[CAPACITY & AFFORDABILITY]: Monthly Income: Rp 220.000.000  | Max Capacity: Rp 500.000.000 | Post-Grant DTI: 9.7%\n[PROCESSED AT]: 2026-09-27T06:41:47.534Z",
+    "scoring": {
+      "calculated_pd": 0.1,
+      "pd_percentage": "10.00%",
+      "base_pd": 0.1
+    },
+    "flags": {
+      "is_valid_nik": true,
+      "is_imputed_income": false,
+      "below_min_income": false,
+      "is_restructured": false,
+      "dti_ratio": 0.0966,
+      "is_high_risk_pd": false
+    },
+    "terms": {
+      "original_tenor_months": 0,
+      "effective_tenor_months": 0,
+      "is_restructured": false,
+      "restructuring_reason": "None"
+    }
+  }
+]
