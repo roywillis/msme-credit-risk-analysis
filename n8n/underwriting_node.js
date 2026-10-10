@@ -76,11 +76,14 @@ function quantizeToLoanTier(affordableCapacity) {
 // ==============================================================================
 // 3. RETRIEVE ALL INCOMING ROWS & FILTER OUT ALREADY PROCESSED
 // ==============================================================================
+// Header-tolerant: matches "application_status", "Application Status", "application_status " etc.
+const readStatus = row => {
+  const key = Object.keys(row).find(k => slug(k) === 'application_status');
+  return String((key && row[key]) ?? '').trim().toUpperCase();
+};
+
 const allRows = $('Google Sheets Trigger').all().map(e => e.json);
-const pendingRows = allRows.filter(row => {
-  const status = String(row.application_status ?? '').trim();
-  return status === '' || status === 'PENDING';
-});
+const pendingRows = allRows.filter(row => ['', 'PENDING'].includes(readStatus(row)));
 
 if (pendingRows.length === 0) return [];
 
