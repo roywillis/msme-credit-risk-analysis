@@ -35,6 +35,8 @@ const CONFIG = {
     monthly_flat_rate: dynamicConfig.monthly_flat_rate ?? 0.015,
     high_dti_threshold: dynamicConfig.high_dti_threshold ?? 0.30,
     high_dti_multiplier: dynamicConfig.high_dti_multiplier ?? 1.25,
+    low_dti_threshold: dynamicConfig.low_dti_threshold ?? 0.20,
+    low_dti_multiplier: dynamicConfig.low_dti_multiplier ?? 0.60,
     borderline_haircut: dynamicConfig.borderline_haircut ?? 0.70,
   },
   culinary: {
@@ -111,15 +113,19 @@ return $input.all().map(entry => {
   const dti_at_application = installmentFor(requested_amount, effective_tenor) / monthly_income;
   const is_high_dti = dti_at_application > CONFIG.limits.high_dti_threshold;
 
-  // PD = sector baseline x regional x DTI x tenor-cap discount
+  // PD = sector baseline x regional x DTI (penalty when high, discount when low) x tenor-cap discount
   const base_pd = toNum(item.scoring.base_pd) ?? 0.12;
   const regional_multiplier = toNum(item.scoring.regional_multiplier) ?? 1.0;
-  const dti_multiplier = is_high_dti ? CONFIG.limits.high_dti_multiplier : 1.0;
+  const is_low_dti = dti_at_application <= CONFIG.limits.low_dti_threshold;
+  const dti_multiplier = is_high_dti ? CONFIG.limits.high_dti_multiplier
+    : is_low_dti ? CONFIG.limits.low_dti_multiplier
+    : 1.0;
   const tenor_multiplier = CONFIG.culinary.pd_discount_multiplier;
 
   const pd_factors = [`${item.business_type} ${fmtPct(base_pd)}`];
   if (regional_multiplier !== 1.0) pd_factors.push(`${item.province} ${regional_multiplier}`);
   if (is_high_dti) pd_factors.push(`DTI>${fmtPct(CONFIG.limits.high_dti_threshold, 0)} ${dti_multiplier}`);
+  if (is_low_dti) pd_factors.push(`DTI<=${fmtPct(CONFIG.limits.low_dti_threshold, 0)} ${dti_multiplier}`);
   pd_factors.push(`tenor cap ${original_tenor}->${effective_tenor}m ${tenor_multiplier}`);
 
   let calculated_pd = base_pd * regional_multiplier * dti_multiplier * tenor_multiplier;
@@ -201,6 +207,7 @@ return $input.all().map(entry => {
         ...item.flags,
         is_restructured: true,
         is_high_dti,
+        is_low_dti,
         is_counter_offer,
         dti_at_application: parseFloat(dti_at_application.toFixed(4)),
         dti_ratio: parseFloat(final_dti_ratio.toFixed(4)),

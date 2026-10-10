@@ -28,6 +28,8 @@ const CONFIG = {
     monthly_flat_rate: dynamicConfig.monthly_flat_rate ?? 0.015,
     high_dti_threshold: dynamicConfig.high_dti_threshold ?? 0.30,
     high_dti_multiplier: dynamicConfig.high_dti_multiplier ?? 1.25,
+    low_dti_threshold: dynamicConfig.low_dti_threshold ?? 0.20,
+    low_dti_multiplier: dynamicConfig.low_dti_multiplier ?? 0.60,
     borderline_haircut: dynamicConfig.borderline_haircut ?? 0.70,
   },
 };
@@ -117,17 +119,24 @@ return pendingRows.map(item => {
 
   // DTI of the requested loan
   const proposed_installment = installmentFor(requested_amount ?? 0, effective_tenor);
-  const dti_at_application = monthly_income > 0 ? proposed_installment / monthly_income : null;
+  // Unknown (null) until income, amount and tenor are all present
+  const dti_at_application = (monthly_income > 0 && requested_amount > 0 && effective_tenor > 0)
+    ? proposed_installment / monthly_income
+    : null;
   const is_high_dti = dti_at_application != null && dti_at_application > CONFIG.limits.high_dti_threshold;
 
-  // PD = sector baseline x regional x DTI
+  // PD = sector baseline x regional x DTI (penalty when high, discount when low)
   const base_pd = basePdFor(business_type);
   const regional_multiplier = regionalMultiplierFor(business_type, province);
-  const dti_multiplier = is_high_dti ? CONFIG.limits.high_dti_multiplier : 1.0;
+  const is_low_dti = dti_at_application != null && dti_at_application <= CONFIG.limits.low_dti_threshold;
+  const dti_multiplier = is_high_dti ? CONFIG.limits.high_dti_multiplier
+    : is_low_dti ? CONFIG.limits.low_dti_multiplier
+    : 1.0;
 
   const pd_factors = [`${business_type || 'default'} ${fmtPct(base_pd)}`];
   if (regional_multiplier !== 1.0) pd_factors.push(`${province} ${regional_multiplier}`);
   if (is_high_dti) pd_factors.push(`DTI>${fmtPct(CONFIG.limits.high_dti_threshold, 0)} ${dti_multiplier}`);
+  if (is_low_dti) pd_factors.push(`DTI<=${fmtPct(CONFIG.limits.low_dti_threshold, 0)} ${dti_multiplier}`);
 
   let calculated_pd = base_pd * regional_multiplier * dti_multiplier;
   calculated_pd = Math.min(Math.max(calculated_pd, 0.01), 0.99);
@@ -242,6 +251,7 @@ return pendingRows.map(item => {
         below_min_income,
         is_restructured: false,
         is_high_dti,
+        is_low_dti,
         is_counter_offer,
         dti_at_application: dti_at_application == null ? null : parseFloat(dti_at_application.toFixed(4)),
         dti_ratio: parseFloat(final_dti_ratio.toFixed(4)),
