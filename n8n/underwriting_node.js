@@ -30,11 +30,6 @@ const CONFIG = {
     high_dti_multiplier: dynamicConfig.high_dti_multiplier ?? 1.25,
     borderline_haircut: dynamicConfig.borderline_haircut ?? 0.70,
   },
-  culinary: {
-    max_tenor_months: dynamicConfig.max_tenor_months_culinary ?? 12,
-    restructured_tenor_months: dynamicConfig.restructured_tenor_months_culinary ?? 12,
-    pd_discount_multiplier: dynamicConfig.pd_discount_multiplier_culinary ?? 0.65,
-  },
 };
 
 // ==============================================================================
@@ -90,7 +85,7 @@ const pendingRows = allRows.filter(row => {
 if (pendingRows.length === 0) return [];
 
 // ==============================================================================
-// 4. INPUT GUARDRAILS, PD & DTI UNDERWRITING
+// 4. INPUT GUARDRAILS, PD & DTI UNDERWRITING (on the requested terms)
 // ==============================================================================
 return pendingRows.map(item => {
   const borrower_id = item.borrower_id ?? '';
@@ -114,35 +109,24 @@ return pendingRows.map(item => {
   if (!(original_tenor > 0)) input_issues.push('tenor');
   const below_min_income = monthly_income != null && monthly_income < CONFIG.limits.min_monthly_income_idr;
 
-  // Culinary Tenor Cap
-  let effective_tenor = original_tenor;
-  let is_restructured = false;
-  let restructuring_reason = 'None';
-
-  if (slug(business_type) === 'kuliner' && original_tenor > CONFIG.culinary.max_tenor_months) {
-    effective_tenor = CONFIG.culinary.restructured_tenor_months;
-    is_restructured = true;
-    restructuring_reason = `Auto-capped Culinary loan from ${original_tenor}m to ${effective_tenor}m ` +
-      `(PD discount x${CONFIG.culinary.pd_discount_multiplier}).`;
-  }
+  // Requested tenor as-is; Kuliner tenor capping happens in the restructuring node
+  const effective_tenor = original_tenor;
 
   // DTI of the requested loan
   const proposed_installment = installmentFor(requested_amount ?? 0, effective_tenor);
   const dti_at_application = monthly_income > 0 ? proposed_installment / monthly_income : null;
   const is_high_dti = dti_at_application != null && dti_at_application > CONFIG.limits.high_dti_threshold;
 
-  // PD = sector baseline x regional x DTI x tenor-cap discount
+  // PD = sector baseline x regional x DTI
   const base_pd = basePdFor(business_type);
   const regional_multiplier = regionalMultiplierFor(business_type, province);
   const dti_multiplier = is_high_dti ? CONFIG.limits.high_dti_multiplier : 1.0;
-  const tenor_multiplier = is_restructured ? CONFIG.culinary.pd_discount_multiplier : 1.0;
 
   const pd_factors = [`${business_type || 'default'} ${fmtPct(base_pd)}`];
   if (regional_multiplier !== 1.0) pd_factors.push(`${province} ${regional_multiplier}`);
   if (is_high_dti) pd_factors.push(`DTI>${fmtPct(CONFIG.limits.high_dti_threshold, 0)} ${dti_multiplier}`);
-  if (is_restructured) pd_factors.push(`tenor cap ${original_tenor}->${effective_tenor}m ${tenor_multiplier}`);
 
-  let calculated_pd = base_pd * regional_multiplier * dti_multiplier * tenor_multiplier;
+  let calculated_pd = base_pd * regional_multiplier * dti_multiplier;
   calculated_pd = Math.min(Math.max(calculated_pd, 0.01), 0.99);
   const pd_percentage = fmtPct(calculated_pd, 2);
   const pd_is_final = input_issues.length === 0;   // DTI unknown until inputs are complete
@@ -247,13 +231,13 @@ return pendingRows.map(item => {
         base_pd,
         regional_multiplier,
         dti_multiplier,
-        tenor_multiplier,
+        tenor_multiplier: 1.0,
       },
       flags: {
         is_valid_nik,
         input_issues,
         below_min_income,
-        is_restructured,
+        is_restructured: false,
         is_high_dti,
         is_counter_offer,
         dti_at_application: dti_at_application == null ? null : parseFloat(dti_at_application.toFixed(4)),
@@ -263,8 +247,8 @@ return pendingRows.map(item => {
       terms: {
         original_tenor_months: original_tenor,
         effective_tenor_months: effective_tenor,
-        is_restructured,
-        restructuring_reason,
+        is_restructured: false,
+        restructuring_reason: 'None',
       },
     },
   };
