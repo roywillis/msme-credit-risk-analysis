@@ -120,13 +120,17 @@ return $input.all().map(entry => {
   const dti_multiplier = is_high_dti ? CONFIG.limits.high_dti_multiplier
     : is_low_dti ? CONFIG.limits.low_dti_multiplier
     : 1.0;
-  const tenor_multiplier = CONFIG.culinary.pd_discount_multiplier;
+  // The shorter tenor only counts as safer if the capped loan stays within the DTI ceiling
+  const tenor_discount_applied = dti_at_application <= CONFIG.limits.max_dti_ratio;
+  const tenor_multiplier = tenor_discount_applied ? CONFIG.culinary.pd_discount_multiplier : 1.0;
 
   const pd_factors = [`${item.business_type} ${fmtPct(base_pd)}`];
   if (regional_multiplier !== 1.0) pd_factors.push(`${item.province} ${regional_multiplier}`);
   if (is_high_dti) pd_factors.push(`DTI>${fmtPct(CONFIG.limits.high_dti_threshold, 0)} ${dti_multiplier}`);
   if (is_low_dti) pd_factors.push(`DTI<=${fmtPct(CONFIG.limits.low_dti_threshold, 0)} ${dti_multiplier}`);
-  pd_factors.push(`tenor cap ${original_tenor}->${effective_tenor}m ${tenor_multiplier}`);
+  pd_factors.push(tenor_discount_applied
+    ? `tenor cap ${original_tenor}->${effective_tenor}m ${tenor_multiplier}`
+    : `tenor cap ${original_tenor}->${effective_tenor}m no discount (DTI>${fmtPct(CONFIG.limits.max_dti_ratio, 0)})`);
 
   let calculated_pd = base_pd * regional_multiplier * dti_multiplier * tenor_multiplier;
   calculated_pd = Math.min(Math.max(calculated_pd, 0.01), 0.99);
@@ -202,6 +206,7 @@ return $input.all().map(entry => {
         pd_percentage,
         dti_multiplier,
         tenor_multiplier,
+        tenor_discount_applied,
       },
       flags: {
         ...item.flags,
